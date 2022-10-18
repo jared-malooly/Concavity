@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>ConvavityDotNet</id>
+    <version>1.0.0.1</version>
+    <title>ConcavityDotNet</title>
+    <authors>jared</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <!-- <icon>icon.png</icon> -->
+    <projectUrl>https://github.com/jared-malooly/Concavity</projectUrl>
+    <description>Tool for creating a concave hull, and other gift wrapping alorithms. Targets .NET Framework 4.7.2. In development, do not depend.</description>
+    <releaseNotes>Initial upload.</releaseNotes>
+    <copyright>Copyright 2022</copyright>
+    <tags>concave-hull</tags>
+  </metadata>
+</package>
