@@ -1,6 +1,6 @@
 # Concavity
 
-Simple solution for a project that required a convex hull and some other point bounding work.
+Simple solution for a project that required a concave hull and some other point bounding work.
 
 Encloses points with a variable "tightness" as if they were shrink wrapped. A simpler convex hull was not tight enough, and wouldnt work with data containing holes and islands.
 
