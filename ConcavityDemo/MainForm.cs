@@ -82,11 +82,21 @@ namespace ConcavityDemo
 
         private void PictureBox_MouseDown(object sender, MouseEventArgs e)
         {
+            if (e.Button == MouseButtons.None) return;
             int x = e.X;
             int y = e.Y;
-            points.Add(new Point(x, y));
-            PictureBox.Image = RefreshMap();
-            PictureBox.Invalidate();
+
+            if (e.Button == MouseButtons.Left)
+            {
+                points.Add(new Point(x, y));
+                PictureBox.Image = RefreshMap();
+                PictureBox.Invalidate();
+            } else
+            {
+                Stopwatch w = Stopwatch.StartNew();
+                var hull = new ConcaveHull(points, K);
+                Debug.WriteLine($"{w.ElapsedMilliseconds}ms: Point ({x},{y}) is {(hull.IsPointInConcaveHull(new Point(x,y))?"inside hull":"not inside hull")}");
+            }
         }
 
         private Bitmap RefreshMap()

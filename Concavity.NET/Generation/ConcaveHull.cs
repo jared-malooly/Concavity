@@ -39,7 +39,11 @@ namespace ConcavityDotNet.Generation
                 bool valid = true;
                 foreach (IEdge e in p.edges)
                 {
-                    if (e.GetLength() > validSize) valid = false;
+                    if (e.GetLength() > validSize)
+                    {
+                        valid = false;
+                        break;
+                    }
                 }
                 if (valid)
                     validTriangles.Add(p);

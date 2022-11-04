@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -61,6 +62,13 @@ namespace ConcavityDotNet.Geometry
 
         public bool IsPointInside(Point p)
         {
+
+            if (edges.Count == 3)
+            {
+                return PointInTriangle(p);
+            }
+
+
             // cast ray from p
 
             /*
@@ -101,6 +109,31 @@ namespace ConcavityDotNet.Geometry
             }
 
             return intersections % 2 != 0;
+        }
+
+        private bool PointInTriangle(Point p)
+        {
+            double sign(Point p1, Point p2, Point p3)
+            {
+                return (p1.X - p3.X) * (p2.Y - p3.Y) - (p2.X - p3.X) * (p1.Y - p3.Y);
+            }
+
+            Point v1 = points[0];
+            Point v2 = points[1];
+            Point v3 = points[2];
+
+
+            double d1, d2, d3;
+            bool has_neg, has_pos;
+
+            d1 = sign(p, v1, v2);
+            d2 = sign(p, v2, v3);
+            d3 = sign(p, v3, v1);
+
+            has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
+            has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
+
+            return !(has_neg && has_pos);
         }
 
         internal double? GetRayToLineSegmentIntersection(Point rayOrigin, Vector rayDirection, Point point1, Point point2)

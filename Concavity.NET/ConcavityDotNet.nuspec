@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ConvavityDotNet</id>
-    <version>1.0.0.1</version>
+    <version>1.0.0.3</version>
     <title>ConcavityDotNet</title>
     <authors>jared</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -14,4 +14,7 @@
     <copyright>Copyright 2022</copyright>
     <tags>concave-hull</tags>
   </metadata>
+	<files>
+		<file src="bin\Release\*.*" target="lib/net45" />
+	</files>
 </package>
